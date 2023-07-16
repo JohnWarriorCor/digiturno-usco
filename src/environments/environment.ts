@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  firebase: {
+  firebaseConfig: {
     apiKey: 'AIzaSyCBdnMEVMKLDLpB885uwllFCiv4aeriQqM',
     authDomain: 'digiturno-usco.firebaseapp.com',
     projectId: 'digiturno-usco',

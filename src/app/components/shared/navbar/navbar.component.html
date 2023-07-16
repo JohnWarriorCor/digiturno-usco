@@ -22,6 +22,11 @@
       <a class="list" mat-list-item [routerLink]="['/inicio']">
         <h6 class="pl-2 item-principal"><i class="fas fa-home"></i> Inicio</h6>
       </a>
+      <a class="list" mat-list-item [routerLink]="['/perfil']">
+        <h6 class="pl-2 item-principal">
+          <i class="fa-solid fa-gear"></i> Configurar perfil
+        </h6>
+      </a>
     </mat-nav-list>
     <mat-accordion>
       <mat-expansion-panel
@@ -87,7 +92,7 @@
               src="assets/carnet-f.png"
               width="40"
               height="40"
-              class="rounded-circle d-inline-block align-top"
+              class="rounded-circle m-2"
               alt="avatar image"
             />
             NOMBRES APELLIDOS</a
@@ -106,8 +111,8 @@
                   height="100"
               /></a>
               <a class="dropdown-item font-usco-default"
-                ><b> NOMBRES APELLIDOS</b></a
-              >
+                ><b> NOMBRES APELLIDOS</b>
+              </a>
               <a class="dropdown-item font-usco-default">
                 UNIDAD ACADÉMICA ADMINISTRATIVA
               </a>
@@ -115,12 +120,16 @@
               <a class="dropdown"
                 ><button
                   (click)="logout()"
-                  class="btn btn-usco-vt"
+                  class="btn btn-usco-vt mr-2"
                   type="button"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Configurar perfil"
                 >
-                  Cerrar Sesión
-                </button></a
-              >
+                  Cerrar Sesión</button
+                ><button class="btn btn-usco-vt">
+                  <i class="fa-solid fa-gear"></i></button
+              ></a>
             </div>
           </div>
         </li>

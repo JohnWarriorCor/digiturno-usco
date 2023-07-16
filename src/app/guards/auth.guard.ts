@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router } from '@angular/router';
 import { Auth } from '@angular/fire/auth';
-import { map, take } from 'rxjs/operators';
-
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-
   constructor(private readonly auth: Auth, private readonly router: Router) {}
 
   canActivate(): boolean {
@@ -20,5 +16,4 @@ export class AuthGuard implements CanActivate {
       return false;
     }
   }
-
 }
