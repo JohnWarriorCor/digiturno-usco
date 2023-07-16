@@ -8,7 +8,11 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from 'firebase/auth';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +25,7 @@ export class LoginComponent implements OnInit {
   today = new Date();
   cargando: boolean = false;
   formLogin!: FormGroup;
+  uid: string = '';
 
   constructor(
     public authService: AuthService,
@@ -56,8 +61,29 @@ export class LoginComponent implements OnInit {
           confirmButtonText: 'Listo',
           confirmButtonColor: '#8f141b',
         });
-
-        this.router.navigate(['/inicio']);
+        const sesion = getAuth();
+        onAuthStateChanged(sesion, (user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/auth.user}
+            // The user object has basic properties such as display name, email, etc.
+            const displayName = user.displayName;
+            const email = user.email;
+            const photoURL = user.photoURL;
+            const emailVerified = user.emailVerified;
+            this.uid = user.uid;
+            console.log(this.uid, displayName, email, photoURL, emailVerified);
+            if (this.uid == 'GVNq2SWAGxTpUUZYZAEpi9th0UC3') {
+              this.router.navigate(['/inicio-admin']);
+            } else {
+              this.router.navigate(['/inicio']);
+            }
+            // ...
+          } else {
+            // User is signed out
+            // ...
+          }
+        });
         // ...
       })
       .catch((error) => {

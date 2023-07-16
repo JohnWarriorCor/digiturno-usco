@@ -9,11 +9,11 @@ import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  selector: 'app-navbar-admin',
+  templateUrl: './navbar-admin.component.html',
+  styleUrls: ['./navbar-admin.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarAdminComponent implements OnInit {
   panelOpenState = false;
   uid: string = '';
 

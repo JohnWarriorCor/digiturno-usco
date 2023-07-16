@@ -17,7 +17,6 @@ import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { TokenComponent } from './components/token/token.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -25,7 +24,11 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { PerfilComponent } from './components/perfil/perfil.component';
+import { NavbarAdminComponent } from './components/shared/navbar-admin/navbar-admin.component';
+import { PerfilAdminComponent } from './components/admin/perfil-admin/perfil-admin.component';
+import { PerfilComponent } from './components/pages/perfil/perfil.component';
+import { InicioAdminComponent } from './components/admin/inicio-admin/inicio-admin.component';
+import { InicioComponent } from './components/pages/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     TokenComponent,
     NavbarComponent,
     PerfilComponent,
+    NavbarAdminComponent,
+    PerfilAdminComponent,
+    InicioAdminComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

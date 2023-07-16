@@ -1,140 +1,111 @@
-<mat-sidenav-container class="sidenav-container" id="page-container">
-  <mat-sidenav
-    #drawer
-    style="width: 281px"
-    *ngIf="navbarHiddenService.visibleSideBar"
-    class="sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-    #target
+<nav class="navbar navbar-expand-lg navbar-dark bg-usco-vt">
+  <a
+    class="navbar-brand"
+    href="#"
+    role="button"
+    data-toggle="dropdown"
+    aria-expanded="false"
   >
-    <mat-toolbar>
-      <span class="logo-lg"
-        ><b
-          ><img
-            class="img-fluid"
-            src="assets/universidad-surcolombiana-multicampos-white.png" /></b
-      ></span>
-    </mat-toolbar>
-    <mat-nav-list>
-      <a class="list" mat-list-item [routerLink]="['/inicio']">
-        <h6 class="pl-2 item-principal"><i class="fas fa-home"></i> Inicio</h6>
-      </a>
-      <a class="list" mat-list-item [routerLink]="['/perfil']">
-        <h6 class="pl-2 item-principal">
-          <i class="fa-solid fa-gear"></i> Configurar perfil
-        </h6>
-      </a>
-    </mat-nav-list>
-    <mat-accordion>
-      <mat-expansion-panel
-        class="sidenav"
-        style="width: 280px"
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
+    <img
+      src="assets/precarga-usco-dos.gif"
+      width="30"
+      height="30"
+      class="rounded-circle d-inline-block align-top"
+      alt="avatar image"
+    />
+    <small> NOMBRE USUARIO </small>
+  </a>
+  <div
+    class="dropdown-menu dropdown-info text-center"
+    aria-labelledby="navbarDropdownMenu"
+    id="gradiante"
+  >
+    <a class="dropdown-info"
+      ><img
+        src="assets/precarga-usco-dos.gif"
+        class="rounded-circle z-depth-0 border-usco-white"
+        alt="avatar image"
+        width="60"
+        height="60"
+    /></a>
+    <a class="dropdown-item font-usco-default">
+      <small class="font-weight-bold">NOMBRE</small>
+    </a>
+    <a class="dropdown-item font-usco-default">
+      <small class="font-weight-bold">APELLIDO</small>
+    </a>
+    <!-- <a class="dropdown-item font-usco-default"><small *ngFor="let u of uaa">{{u}} <br></small></a> -->
+    <div class="dropdown-divider"></div>
+    <a class="dropdown"
+      ><button (click)="logout()" class="btn btn-usco-vt" type="button">
+        Cerrar Sesión
+      </button></a
+    >
+  </div>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item item-usco active">
+        <a
+          class="nav-link font-usco-default"
+          [routerLink]="['/inicio']"
+          routerLinkActive="router-link-active"
+          ><i class="fa-solid fa-house"></i> Inicio</a
+        >
+      </li>
+      <li class="nav-item item-usco active">
+        <a
+          class="nav-link font-usco-default"
+          [routerLink]="['/perfil']"
+          routerLinkActive="router-link-active"
+        >
+          <i class="fa-solid fa-gear"></i> Configurar perfil</a
+        >
+      </li>
+      <!--  <li class="nav-item item-usco active">
+      <a
+        class="nav-link font-usco-default"
+        [routerLink]="['/tiquete-visitantes']"
+        routerLinkActive="router-link-active"
+        ><i class="fa-solid fa-ticket"></i> Tiquete</a
       >
-        <mat-expansion-panel-header class="disable_ripple specific-class">
-          <mat-panel-title>
-            <h6 class="text-white mt-2">
-              <i class="fa-solid fa-user"></i> Sesión
-            </h6>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a
-            class="pl-5 sidenav-accordion"
-            mat-list-item
-            style="width: 300px"
-            [routerLink]="['/login']"
-            routerLinkActive="router-link-active"
-          >
-            <h6 class="text-white"><i class="fa-solid fa-lock"></i> Login</h6>
-          </a>
-          <a
-            class="pl-5 sidenav-accordion"
-            mat-list-item
-            style="width: 300px"
-            [routerLink]="['/token']"
-            routerLinkActive="router-link-active"
-          >
-            <h6 class="text-white"><i class="fa-solid fa-key"></i> Token</h6>
-          </a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar class="toolbar">
-      <button
-        type="button"
-        class="btn btn-usco-vt m-1 text-white"
-        aria-label="Toggle sidenav"
-        (click)="toggle()"
-        *ngIf="isHandset$"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-      <h6 *ngIf="navbarHiddenService.visibleSideBar == true">
-        Digiturno CITCD
-      </h6>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle text-white"
-            id="navbarDropdownMenu"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <img
-              src="assets/carnet-f.png"
-              width="40"
-              height="40"
-              class="rounded-circle m-2"
-              alt="avatar image"
-            />
-            NOMBRES APELLIDOS</a
-          >
-          <div
-            class="dropdown-menu dropdown-menu-right dropdown-info"
-            aria-labelledby="navbarDropdownMenu"
-            id="gradiante"
-          >
-            <div class="text-center">
-              <a class="dropdown-info"
-                ><img
-                  src="assets/carnet-f.png"
-                  class="rounded-circle z-depth-0 border-usco-white"
-                  alt="avatar image"
-                  height="100"
-              /></a>
-              <a class="dropdown-item font-usco-default"
-                ><b> NOMBRES APELLIDOS</b>
-              </a>
-              <a class="dropdown-item font-usco-default">
-                UNIDAD ACADÉMICA ADMINISTRATIVA
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown"
-                ><button
-                  (click)="logout()"
-                  class="btn btn-usco-vt mr-2"
-                  type="button"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Configurar perfil"
-                >
-                  Cerrar Sesión</button
-                ><button class="btn btn-usco-vt">
-                  <i class="fa-solid fa-gear"></i></button
-              ></a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </mat-toolbar>
-    <ng-content></ng-content>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    </li> -->
+      <!--  <li class="nav-item item-usco dropdown active">
+      <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-ticket"></i> Tiquete
+      </a>
+      <div class="dropdown-menu dropdown-info bg-usco-vt">
+        <a class="dropdown-item item-usco text-white" [routerLink]="['/tiquete-invitados']"
+          routerLinkActive="router-link-active"><i class="fa-solid fa-users-rectangle"></i> Invitado</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item item-usco text-white" [routerLink]="['/tiquete-visitantes']"
+          routerLinkActive="router-link-active"><i class="fa-solid fa-users"></i> Visitante</a>
+      </div>
+    </li> -->
+      <li class="nav-item item-usco active">
+        <a class="nav-link font-usco-default cursor-select" (click)="logout()"
+          ><i class="fa-solid fa-door-open"></i> Cerrar Sesión</a
+        >
+      </li>
+    </ul>
+    <br />
+    <div class="text-center">
+      <img
+        src="assets/universidad-surcolombiana-p-multicampus.png"
+        alt="USCO"
+      />
+    </div>
+  </div>
+</nav>
+<ng-content></ng-content>

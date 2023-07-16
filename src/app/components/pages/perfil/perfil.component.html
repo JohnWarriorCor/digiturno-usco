@@ -1,0 +1,142 @@
+<app-navbar>
+  <div class="container text-center mt-5">
+    <div
+      class="row shadow p-5"
+      style="border-radius: 10px; background-color: white"
+    >
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <form [formGroup]="formPerfil">
+              <div class="row text-left mb-3">
+                <div class="col">
+                  <h5 class="font-usco-vt font-weight-bold">
+                    Datos personales
+                  </h5>
+                  <hr class="hr-usco-vt" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="row">
+                    <div class="col">
+                      <img
+                        [src]="fotoCarnet.url"
+                        alt="usco"
+                        class="img-fluid foto-usco-borde"
+                        style="width: 70%"
+                      />
+                      <div class="col mt-3">
+                        <div class="form-group">
+                          <label class="file example-full-width">
+                            <input
+                              type="file"
+                              accept="image/png"
+                              (change)="change($event)"
+                              aria-label="File browser example"
+                            />
+                            <span class="file-custom text-left">{{
+                              nameFile
+                            }}</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="row">
+                    <div class="col text-left">
+                      <div class="form-group">
+                        <small
+                          class="font-usco-bl font-usco-default font-weight-bold"
+                          >Nombre(s)</small
+                        >
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Nombre(s)</mat-label>
+                          <input matInput formControlName="nombre" required />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col text-left">
+                      <div class="form-group">
+                        <small
+                          class="font-usco-bl font-usco-default font-weight-bold"
+                          >Apellido(s)</small
+                        >
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Apellido(s)</mat-label>
+                          <input matInput formControlName="apellido" required />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col text-left">
+                      <div class="form-group">
+                        <small
+                          class="font-usco-bl font-usco-default font-weight-bold"
+                          >Correo</small
+                        >
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Correo</mat-label>
+                          <input matInput formControlName="correo" required />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col text-left">
+                      <div class="form-group">
+                        <small
+                          class="font-usco-bl font-usco-default font-weight-bold"
+                          >Correo verificado</small
+                        >
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Validado</mat-label>
+                          <input matInput formControlName="validado" required />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col text-left">
+                      <div class="form-group">
+                        <small
+                          class="font-usco-bl font-usco-default font-weight-bold"
+                          >Url foto</small
+                        >
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Foto</mat-label>
+                          <input matInput formControlName="url" required />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-right">
+            <button
+              class="btn btn-success mr-2"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="guardar"
+            >
+              <i class="fa-solid fa-floppy-disk"></i> Guardar
+            </button>
+            <!-- <button
+                class="btn btn-warning"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="cancelar"
+              >
+                <i class="fa-solid fa-xmark"></i> Cancelar
+              </button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-navbar>
